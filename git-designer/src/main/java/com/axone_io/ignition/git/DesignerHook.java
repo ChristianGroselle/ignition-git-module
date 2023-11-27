@@ -97,7 +97,7 @@ public class DesignerHook extends AbstractDesignerModuleHook {
         toolbar.add(new GitBaseAction(GitBaseAction.GitActionType.PULL));
         toolbar.add(new GitBaseAction(GitBaseAction.GitActionType.COMMIT));
         toolbar.add(new GitBaseAction(GitBaseAction.GitActionType.EXPORT));
-
+        toolbar.add(new GitBaseAction(GitBaseAction.GitActionType.BRANCH));
         toolBarManager.addDockableBar(toolbar);
     }
 

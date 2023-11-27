@@ -34,6 +34,10 @@ public class GitBaseAction extends BaseAction {
         EXPORT(
             "DesignerHook.Actions.ExportGatewayConfig",
             "/com/axone_io/ignition/git/icons/ic_folder.svg"
+        ),
+        BRANCH(
+            "DesignerHook.Actions.Branch",
+            "/com/axone_io/ignition/git/icons/ic_branch.svg" 
         );
 
         private final String baseBundleKey;
@@ -93,6 +97,8 @@ public class GitBaseAction extends BaseAction {
                     break;
                 case EXPORT:
                     rpc.exportConfig(projectName);
+                    break;
+                case BRANCH:
                     break;
             }
             if(confirmPopup) SwingUtilities.invokeLater(new Thread(() -> showConfirmPopup(message, messageType)));

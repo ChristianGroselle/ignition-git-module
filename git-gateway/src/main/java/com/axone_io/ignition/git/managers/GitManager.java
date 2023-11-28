@@ -254,6 +254,24 @@ public class GitManager {
         }
     }
 
+    public static void branchRepo(String parentBranch, String targetBranch, String projectName) {
+        File projectDirFile = getProjectFolderPath(projectName).toFile();
+        if (projectDirFile.exists()) {
+            try (Git git = Git.init().setDirectory(projectDirFile).call()) {
+                disableSsl(git);
+
+                CheckoutCommand checkout = git.checkout()
+                        .setCreateBranch(true)
+                        .setName(targetBranch)
+                        .setUpstreamMode(CreateBranchCommand.SetupUpstreamMode.TRACK);
+//                        .setStartPoint(parentBranch + "/" + targetBranch);
+            } catch (Exception e) {
+                logger.error(e.toString());
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
     public static ResourcePath getResourcePath(String resourcePath) {
         String moduleId = "";
